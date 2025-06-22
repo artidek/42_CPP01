@@ -6,7 +6,7 @@
 /*   By: aobshatk <aobshatk@mail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 18:12:55 by aobshatk          #+#    #+#             */
-/*   Updated: 2025/06/22 19:14:43 by aobshatk         ###   ########.fr       */
+/*   Updated: 2025/06/22 20:40:22 by aobshatk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@ int main (int argc, char **argv)
 	switch (harl.levelInd(arg))
 	{
 		case 0:
-		case 1:
 			harl.complain("DEBUG");
+			//fall through
+		case 1:
 			harl.complain("INFO");
-			break;
+			//fall through
 		case 2:
-		case 3:
 			harl.complain("WARNING");
+			//fall through
+		case 3:
 			harl.complain("ERROR");
 			break;
 		default:
