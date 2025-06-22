@@ -6,7 +6,7 @@
 /*   By: aobshatk <aobshatk@mail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 16:57:36 by aobshatk          #+#    #+#             */
-/*   Updated: 2025/06/22 18:54:44 by aobshatk         ###   ########.fr       */
+/*   Updated: 2025/06/22 19:18:12 by aobshatk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,14 @@ void Harl::complain(std::string level)
 		}
 	}
 	std::cout << "Probably complaining something not important\n";	
+}
+
+int	Harl::levelInd(std::string level)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (_keyArr[i].key.compare(level) == 0)
+			return i;
+	}
+	return -1;
 }
