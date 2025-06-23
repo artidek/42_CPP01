@@ -6,7 +6,7 @@
 /*   By: aobshatk <aobshatk@mail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 11:01:49 by aobshatk          #+#    #+#             */
-/*   Updated: 2025/06/22 12:39:37 by aobshatk         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:39:18 by aobshatk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class	Fman
 		std::string _fname;
 		std::string _NewFname;
 		void _copyContent(void);
+		const std::string _findAndReplace(std::string str, std::string fStr, std::string rStr);
 	public:
 		Fman(std::string& fname);
 		~Fman(void);

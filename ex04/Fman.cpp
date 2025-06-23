@@ -6,7 +6,7 @@
 /*   By: aobshatk <aobshatk@mail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 11:20:04 by aobshatk          #+#    #+#             */
-/*   Updated: 2025/06/22 13:09:24 by aobshatk         ###   ########.fr       */
+/*   Updated: 2025/06/23 15:37:13 by aobshatk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,7 @@ void Fman::replace(std::string& s1, std::string& s2)
 	newFile.open(_NewFname.c_str(), std::ios::in);
 	while (std::getline(newFile, buf))
 	{
-		if (buf.compare(s1) == 0)
-			file << s2 << std::endl;
-		else
-			file << buf << std::endl;
+		file << _findAndReplace(buf, s1, s2) << std::endl;
 	}
 	file.close();
 	newFile.close();
@@ -68,4 +65,42 @@ void Fman::_copyContent(void)
 	}
 	newFile.close();
 	file.close();
+}
+
+const std::string Fman::_findAndReplace(std::string str, std::string fStr, std::string rStr)
+{
+	size_t	pos = 0;
+	size_t lastPos = 0;
+	int found = 0;
+	std:: string retStr;
+
+	if (str.size() < fStr.size() || str.empty())
+		return str;
+	while ((pos = str.find(fStr, lastPos)) != std::string::npos)
+	{
+		found = 1;
+		if (retStr.empty())
+		{
+			if (pos == 0)
+				retStr += rStr;
+			else
+			{
+				retStr += str.substr(0, pos);
+				retStr += rStr;
+			}
+		}
+		else
+		{
+			retStr += str.substr(lastPos, pos - lastPos);
+			retStr += rStr;
+		}
+		lastPos = pos + fStr.size();
+	}
+	if (lastPos + 1 < str.size() && found)
+	{
+		retStr += str.substr(lastPos);
+	}
+	if (!found)
+		retStr += str;
+	return retStr;
 }
